@@ -1,0 +1,38 @@
+KornShell:
+You are sitting at a computer terminal whose 26 alphabetic keys have been randomly rearranged (permuted) and you enter your name, say, “Mike Korn.” 
+Since the keys are scrambled what appears on the screen is also scrambled. 
+
+The game consists of you typing the characters you see on the screen until your name appears. 
+
+The length of the game is the number of times you must type a the string on the screen before your name appears, at which point the game terminates.
+
+A game therefore consists of two pieces of information, viz., an input string and a permutation of the 26 alphabetic keys. 
+Everything else is completely determined by these two pieces of information. 
+
+
+The puzzle is this: if I give you a name can you give me the length of the longest possible game which uses that name as its first input?
+
+
+>>>  Problem sounded cryptic, but underlying problem is very simple.
+
+Solution:
+=========
+1) For a given name (ex:: Mike Korn), count of unique characters matter.  ( = U)
+   i.e. M, I, K, E, O, R, N  (= 7 )
+    a) K is used twice, but come in same repetition as other K.
+    b) lower case, upper case do not matter. 
+
+2) Given a name the answer to problem is :
+      MAX(LEAST COMMON MULTIPLE (s1, s2, ... , sN))
+
+         where: MAX = maximum value
+	        s1 = length of sequence where one or more characters of name are present
+		s2 = length of sequence where one or more characters of name are present
+		..
+		...
+		sN
+
+		N = maximum number of sequence.
+
+     condition: s1 + s2 +  ... + sN <= 26 (total number of alphabets)
+                N <= U, number of unique characters present in the name.

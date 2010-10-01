@@ -1,0 +1,59 @@
+KornShell:
+    Problem sounded cryptic, but underlying problem can be solved by simple recursion / tree traversal
+
+Solution:
+=========
+1) For a given name : Mike Korn, count of unique characters matter. 
+   i.e. M, I, K, E, O, R, N 
+    a) K is used twice, but come in same repetition as other K.
+    b) lower case, upper case do not matter. 
+
+2) Problem can be divided into smaller problems and the results used to get result to original problem.
+
+Explanation:
+============
+   Given 5 alphabets and  2 alphabet name : 5_Prob_2
+
+   5 alphabets can be divided into ranges: 
+
+   {5,    0},  {4,   1},   {3,   2},   {2,   3},   {1,   4},  {0 ,5}
+   {R1L, R1R}, {R2L, R2R}, {R3L, R3R}, {R4L, R4R}, {R5L, R5R} {R6L, R6T} = R
+
+   where:  
+      {4, 1} 4 keys are jumbled in some sequenece, and 1 key is jumbled in other sequence
+      {R2L, R2R }: to denote the lenght of the jumble sequences
+
+
+   Two alphabet name can be divide into range: 
+
+   {2,  0},    {1,   1},   {0, 2}
+   {N1L, N1R}, {N2L, N2R}, {N3L, N3R}  = N
+ 
+   where: 
+       {1,1} : both the alphabets are in different sequences
+       {N1L, N1R} : denote the sequence 
+
+   A random sequnce can be cosntructed from choosing any element in R, and any element in N, for example : ({R4L, R4R}{N2l, N2R}) = R
+
+   (though some selections like {R1L,R1R}{N3L, N3R} are void selections)
+
+   
+   Cost of random sequence R is: 
+      Least common Multiple (Max(R2L, N1L), MAX(R2R, N2R))
+   
+      where: Max(R2L, N1L) : Max(4, 1)
+              = Sub problem : 4_Prob_1
+             Max(R2R, N2R) : Max (1, 1)
+	     = Sub Problem : 1_Prob_1
+
+
+  Observation 1: 
+       Given this way , original problem 5_Prob_2 now can be be expanded into tree with smaller problem, 4_Prob_1 ... : 
+
+  Observation 2:
+        Result (5_Prob_2) = Max(all sequence in space {N x R})
+
+
+End Result: 
+===========
+       A solution can be implemented using Observation 1 and Observation 2.
