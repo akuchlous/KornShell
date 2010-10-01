@@ -1,0 +1,14 @@
+KornShell:
+You are sitting at a computer terminal whose 26 alphabetic keys have been randomly rearranged (permuted) and you enter your name, say, “Mike Korn.” 
+Since the keys are scrambled what appears on the screen is also scrambled. 
+
+The game consists of you typing the characters you see on the screen until your name appears. 
+
+The length of the game is the number of times you must type a the string on the screen before your name appears, at which point the game terminates.
+
+A game therefore consists of two pieces of information, viz., an input string and a permutation of the 26 alphabetic keys. 
+Everything else is completely determined by these two pieces of information. 
+
+
+The puzzle is this: if I give you a name can you give me the length of the longest possible game which uses that name as its first input?
+
